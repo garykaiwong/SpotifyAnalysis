@@ -27,13 +27,16 @@ function build(sample) {
     panel.html("");
 
     for (i=0; i<10; i++){
-        console.log(result["songs"][i]);
+        let song = result["songs"][i];
+        let artist = result["artists"][i].replace("[", "").replace("]", "");
+        console.log(song);
+        console.log(artist);
+        panel.append("p").text(`${song} by ${artist}`);
     }
 
 
-       //Object.entries(result).forEach(([key,detail]) => {
-       //    panel.append("p").text(`${key}: ${detail}`);
-       //})
+
+
     
     
 
