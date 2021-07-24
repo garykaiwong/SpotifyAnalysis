@@ -28,13 +28,15 @@ function build(sample) {
 
     for (i=0; i<10; i++){
         let song = result["songs"][i];
-        let artist = result["artists"][i].replace("[", "").replace("]", "");
+        let artist = result["artists"][i].replace("[", "").replace("]", "").replace("'", '').replace("'", '').replace("'", "").replace("'", "");
         console.log(song);
         console.log(artist);
         panel.append("p").text(`${song} by ${artist}`);
     }
 
-
+    //Object.entries(result).forEach(([key,detail]) => {
+    //       panel.append("p").text(`${key}: ${detail}`);
+    //   })
 
 
     
@@ -43,15 +45,3 @@ function build(sample) {
 
     }
 )};
-
-function sorter(year) {
-
-    let path = "data.json";
-
-    let response = d3.json(path);
-    
-    let fil = response.filter(obj => obj.id == year);
-
-    console.log(fil);
-
-};
