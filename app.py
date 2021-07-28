@@ -4,7 +4,13 @@ import pandas as pd
 
 app = Flask(__name__)
 engine = create_engine("sqlite:///data_by_year_.sqlite")
+database_path = "../data_by_year_o.sqlite"
+URI = f"sqlite:///{database_path}
 
+engine = create_engine(URI)
+conn = engine.connect()
+
+agg_year_data= pd.read_sql("SELECT * FROM data_by_year", conn)
 
 
 @app.route("/")
