@@ -1,6 +1,7 @@
-d3.csv("/Resources/data_by_year_o.csv").then(function(data){
-
-
+function init () {
+	let selector = d3.select("#selValue");
+	d3.json("/explicit_vs_popularity").then((response)=>
+		console.log(response);
 });
 Plotly.d3.csv(path, function (err, data) {
   // Create a lookup table to sort and regroup the columns of data,
@@ -165,3 +166,4 @@ Plotly.d3.csv(path, function (err, data) {
     frames: frames,
   });
 });
+init();
