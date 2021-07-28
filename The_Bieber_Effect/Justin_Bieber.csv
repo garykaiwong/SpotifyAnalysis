@@ -1,3 +1,6 @@
+version https://git-lfs.github.com/spec/v1
+oid sha256:a241951568695a627077f76fcdae08e3376be28972d43bf7d327b2617c14ef4c
+size 51900
 ,id,name,popularity,duration_ms,explicit,artists,id_artists,release_date,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,time_signature
 82248,6eDApnV9Jdb1nYahOlbbUh,One Time,71,215867,0,['Justin Bieber'],['1uNFoZAHBGtllmzznpCI3s'],2009-01-01,0.691,0.853,1,-2.528,0,0.0372,0.0631,7.13e-05,0.08199999999999999,0.762,145.999,4
 82299,69ghzc538EQSVon2Gm3wrr,One Less Lonely Girl,69,229107,0,['Justin Bieber'],['1uNFoZAHBGtllmzznpCI3s'],2009-01-01,0.58,0.75,4,-4.421,1,0.19399999999999998,0.159,0.0,0.27399999999999997,0.728,86.93799999999999,4
