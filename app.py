@@ -1,10 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+from sqlalchemy import create_engine
 
 app = Flask(__name__)
+engine = create_engine("sqlite:///data_by_year_.sqlite")
+
+
 
 @app.route("/")
 def start():
     return render_template('page.html')
+
+@app.route("/explicit_vs_popularity")
+def explicit_popularity():
+
+    df = pd.read_sql_query("""SELECT explicit, popularity 
+                    FROM data_o
+                    GROUP BY year;""", engine)
+    results = df.to_json(orient="records")
+    
+    return results
 
 
 
