@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>
+
+<script>
+let data = d3.json("years.json");
+console.log(data);
+
+
+function create (year) {
+    d3.json("years.json").then(info => {
+        let acc = info[year]["acous"];
+        let energy = info[year]["energy"];
+        let dance = info[year]["dance"];
+        let instr = info[year]["instr"];
+        let live = info[year]["live"];
+        let speech = info[year]["speech"];
+   
+	
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	
+	title:{
+		text:`Music Characteristics of ${year}`
+	},
+	axisX:{
+		interval: 1
+	},
+	axisY2:{
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+		title: "Measures"
+	},
+	data: [{
+		type: "bar",
+		name: "companies",
+		axisYType: "secondary",
+		color: "#014D65",
+		dataPoints: [
+			{ y: acc, label: "Acousticness" },
+			{ y: energy, label: "Energy" },
+			{ y: dance, label: "Danceability" },
+			{ y: instr, label: "Instrumentalness" },
+			{ y: live, label: "Liveliness" },
+			{ y: speech, label: "Speechiness" }
+		]
+	}]
+});
+chart.render();
+ })
+}
+
+//let tests = ["1923", "1924", "1975"];
+
+/*for(i=0;i<tests.length;i++){
+    setInterval(function(){
+    create(tests[i]); 
+    //this code runs every second 
+}, 3000);
+}*/
+
+
+
+
+
+</script>
+</head>
+<body>
+<button onclick="setInterval(create('1923'), 3000)">1923</button>
+<button onclick="setInterval(create('1924'), 3000)">1924</button>
+
+<script>
+	let tests = ["1923", "1924", "1975"];
+
+	var i = 0;                  //  set your counter to 1
+
+	function myLoop() {         //  create a loop function
+	  setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+		create(tests[i]);   //  your code here
+		i++;                    //  increment the counter
+		if (i < 3) {           //  if the counter < 10, call the loop function
+		  myLoop();             //  ..  again which will trigger another 
+		}                       //  ..  setTimeout()
+	  }, 3000)
+	}
+
+	myLoop(); 
+
+	
+</script>
+
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
