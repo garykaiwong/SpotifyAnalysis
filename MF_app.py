@@ -3,11 +3,9 @@ from sqlalchemy import create_engine
 import pandas as pd
 
 app = Flask(__name__)
-engine = create_engine("sqlite:///data_by_year_.sqlite")
-database_path = "../data_by_year_o.sqlite"
-URI = f"sqlite:///{database_path}
+engine = create_engine("sqlite:///database.sqlite")
 
-engine = create_engine(URI)
+
 conn = engine.connect()
 
 agg_year_data= pd.read_sql("SELECT * FROM data_by_year", conn)
@@ -20,12 +18,14 @@ def start():
 @app.route("/explicit_vs_popularity")
 def explicit_popularity():
 
-    explicit_df = pd.read_sql_query("""SELECT explicit, popularity 
-                    FROM data_o
-                    GROUP BY year;""", engine)
-    results = explicit_df.to_json(orient="records")
+    explicit_df = pd.read_sql_query("""SELECT AVG(explicit) as 'avg explicit', AVG(popularity) as 'avg popularity', artists
+                    FROM tracks
+                    GROUP BY artists
+                    HAVING AVG(popularity)>3;""", engine)
+                    
+    results = explicit_df.to_dict(orient="records")
     
-    return results
+    return jsonify(results)
 
 
 
