@@ -17,6 +17,21 @@ def start():
     
     return render_template('harlanindex.html', intel = intel)
 
+@app.route("/trts")
+def new():
+    conn = 'mongodb://localhost:27017'
+    client = pymongo.MongoClient(conn)
+
+    db = client.traitsDB
+
+    traits_pull= db.traits.find()
+
+    intel = traits_pull[0]
+
+    intel.pop('_id', None)
+    
+    return render_template('try.html', intel = intel)
+
 
 
 
