@@ -4,13 +4,13 @@ Spotify Analysis
 
 <!-- ABOUT THE PROJECT -->
 ## Table of Contents:
-* [Built With]()
-* [Getting Started]()
-* [Project Link]()
-* [Who can use this data]()
-* [Prerequisites]()
-* [Contributors]()
-* [Kaggle DataSource]()
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+* [Project Links](#project-links)
+* [Who can use this data](#who-can-use-this-data)
+* [Prerequisites](#prerequisites)
+* [Contributors](#contributors)
+* [Kaggle DataSource](#kaggle-datasource)
 
 
 
@@ -56,8 +56,8 @@ This project can be used to find out which songs were streamed the most and by w
 ## Contributors
 1. Harlan Brasek
 2. Melissa Fraas
-3. Gary Wong
-4. Emily Leniart
+3. Emily Leniart
+4. Gary Wong
 
 <!-- LICENSE -->
 ## Kaggle DataSource:
