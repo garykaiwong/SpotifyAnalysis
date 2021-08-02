@@ -33,8 +33,8 @@ Extracted from our data sources to build a base for each visualization we worked
 Obtained the ten most popular songs from each year and loaded them into a mongoDB. We used our Javascript development skills to upload our datasets. We used this to showcase each visualization on our webpage!
 
 ### Project Link
-Web URL: http://127.0.0.1:5000/
-Google Slides URL: https://docs.google.com/presentation/d/1RAphSSb26eVi2rbmSSykMAaC3JJcAzA0rprL3A2BG1M/edit#slide=id.ge76654bb95_0_61
+* Web URL: http://127.0.0.1:5000/
+* Google Slides URL: https://docs.google.com/presentation/d/1RAphSSb26eVi2rbmSSykMAaC3JJcAzA0rprL3A2BG1M/edit#slide=id.ge76654bb95_0_61
 
 ## Who can use this data
 
