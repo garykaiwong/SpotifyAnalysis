@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>JavaScript</title>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+</head>
+
+<body>
+
+   <!-- <p>{{intel | safe}}</p> -->
+
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Spotify Analysis</span>
+      </div>
+    </nav>
+
+
+        <div class="well">
+          <h5>Select Year:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+        
+    <div id="sample-metadata" class="panel-body"></div>
+
+    <script> 
+        let thing = {{intel|safe}};
+
+        console.log(thing);
+
+        console.log(thing.length);
+        
+        
+        function init() {
+
+            let dropdown = d3.select("#selDataset");
+
+            let years = [];
+
+            for (i=0;i<thing.length;i++){
+                console.log(thing[i]['id'])
+                dropdown.append("option").text(thing[i]["id"]).property("value", thing[i]["id"]);
+            }
+            let sample = thing[0]['id'];
+            console.log(sample);
+
+            build(sample);
+
+        }
+
+
+
+        function build(sample) {
+
+            let idInfo = thing.filter(obj =>obj.id ==sample);
+            console.log(idInfo);
+
+            let result = idInfo[0];
+            console.log(result);         
+
+            let panel = d3.select("#sample-metadata");
+
+            panel.html("");
+
+            for (i=0; i<10; i++){
+                let song = result["songs"][i];
+                let artist = result["artists"][i].replace("[", "").replace("]", "").replace("'", '').replace("'", '').replace("'", "").replace("'", "");
+                console.log(song);
+                console.log(artist);
+                panel.append("p").text(`${i+1}. ${song} by ${artist}`);
+            }  
+
+};
+
+
+        function optionChanged(thing){
+
+            build(thing);
+
+        }
+
+        init();
+        
+    </script>
+
+   <!--  <script type="text/javascript"
+         src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+
+
+</body>
+
+</html>

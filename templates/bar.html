@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+
+ </head>
+
+ <body>
+
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Song', 'Danceability'],
+          ['Peaches (feat. Daniel Caesar & Giveon)', 0.677],
+          ['drivers licence',0.585],
+          ['Astronaut In The Ocean	',0.778],
+          ['Leave The Door Open', 0.586],
+          ['Fiel',0.849],
+          ['Friday (feat. Mufasa & Hypeman) - Dopamine Remix', 0.824],
+          ['Ella No Es Tuya - Remix', 0.585],
+          ['Up',0.868],
+          ['Goosebumps - Remix', 0.841],
+          ['Hold Up', 0.658],
+      ]);
+
+
+        var options = {
+          title: 'Top 10 Songs Danceability rate',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+
+</body>
+
+</html>

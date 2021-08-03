@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <script src="https://cdn.plot.ly/plotly-2.3.0.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Spotify Analysis</span>
+      </div>
+    </nav>
+
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+   <!-- <p>{{intel | safe}}</p> -->
+
+    <script>
+        
+        let response = {{intel|safe}};
+        console.log(response);
+
+
+        function create (year) {
+
+                let acc = response[year]["acous"];
+                let energy = response[year]["energy"];
+                let dance = response[year]["dance"];
+                let instr = response[year]["instr"];
+                let live = response[year]["live"];
+                let speech = response[year]["speech"];
+
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+
+            title:{
+                text:`Music Characteristics of ${year}`
+            },
+            axisX:{
+                interval: 1
+            },
+            axisY2:{
+                interlacedColor: "rgba(1,77,101,.2)",
+                gridColor: "rgba(1,77,101,.1)",
+                title: "Measures"
+            },
+            data: [{
+                type: "bar",
+                name: "companies",
+                axisYType: "secondary",
+                color: "#014D65",
+                dataPoints: [
+                    { y: acc, label: "Acousticness" },
+                    { y: energy, label: "Energy" },
+                    { y: dance, label: "Danceability" },
+                    { y: instr, label: "Instrumentalness" },
+                    { y: live, label: "Liveliness" },
+                    { y: speech, label: "Speechiness" }
+                ]
+            }]
+        });
+        chart.render();
+        }
+
+    let tests = ["1924", "1925","1926", "1927", '1928', '1929', '1930', '1931', '1932', '1933', '1934', '1935', '1936', '1937', '1938', '1939', '1940', '1941', '1942', '1943', '1944', '1945', '1946', '1947', '1948', '1949', '1950', '1951', '1952', '1953', '1954', '1955', '1956', '1957', '1958', '1959', '1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969', '1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021'];
+
+    var i = 0;
+
+    create("1923");
+
+    function myLoop() {         //  create a loop function
+      setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+        create(tests[i]);   //  your code here
+        i++;                    //  increment the counter
+    if (i < tests.length) {           //  if the counter < 10, call the loop function
+      myLoop();             //  ..  again which will trigger another 
+    }                       //  ..  setTimeout()
+  }, 2000)
+}
+
+myLoop();
+
+    </script>
+
+
+
+</body>
+
+</html>
